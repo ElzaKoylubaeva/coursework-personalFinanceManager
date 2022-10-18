@@ -47,8 +47,10 @@ public class StorageService {
         }
 
         MaxCategory maxCategory = new MaxCategory();
-        maxCategory.setCategory(category);
-        maxCategory.setSum(sum);
+        if (category != null) {
+            maxCategory.setCategory(category);
+            maxCategory.setSum(sum);
+        }
 
         Response response = new Response();
         response.setMaxCategory(maxCategory);

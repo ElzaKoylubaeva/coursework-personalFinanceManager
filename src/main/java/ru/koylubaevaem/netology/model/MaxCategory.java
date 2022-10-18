@@ -4,7 +4,7 @@ public class MaxCategory {
 
     private String category;
 
-    private long sum;
+    private Long sum;
 
     public String getCategory() {
         return category;
@@ -14,11 +14,11 @@ public class MaxCategory {
         this.category = category;
     }
 
-    public long getSum() {
+    public Long getSum() {
         return sum;
     }
 
-    public void setSum(long sum) {
+    public void setSum(Long sum) {
         this.sum = sum;
     }
 
