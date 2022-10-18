@@ -14,16 +14,25 @@ public class Main {
     public static final int PORT = 8989;
 
     public static void main(String[] args) throws IOException {
-        FileService test = new FileService();
-        Map<String, String> item2cat = test.readFile(new File("categories.tsv"));
+        File binStatisticFile = new File("data.bin");
+        FileService fileService = new FileService();
+        Map<String, String> item2cat = fileService.readFile(new File("categories.tsv"));
         System.out.println(item2cat);
 
         StorageService storageService = new StorageService();
         storageService.setItem2Category(item2cat);
 
+        if (binStatisticFile.exists()) {
+            try {
+                Map<String, Long> cat2Sum = fileService.readBinData(binStatisticFile);
+                storageService.setCategory2Sum(cat2Sum);
+            } catch (ClassNotFoundException ignore) {}
+        }
+
         MappingService mappingService = new MappingService();
 
         System.out.println("Starting server...");
+        System.out.println("Categories: " + storageService.getCategory2Sum());
         try (ServerSocket serverSocket = new ServerSocket(PORT)) {
             System.out.println("Server started...");
             while (true) {
@@ -39,6 +48,7 @@ public class Main {
                     Response response = storageService.getMaxCategory();
                     String result = mappingService.serialize(response);
                     out.println(result);
+                    fileService.saveBinData(binStatisticFile, storageService.getCategory2Sum());
                 }
             }
         } catch (IOException e) {
