@@ -23,6 +23,10 @@ public class StorageService {
         this.category2Sum = category2Sum;
     }
 
+    public Map<String, Long> getCategory2Sum() {
+        return category2Sum;
+    }
+
     public String getCategory(String item) {
         String category = item2Category.get(item);
         if (category == null) {

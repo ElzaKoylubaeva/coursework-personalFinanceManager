@@ -26,9 +26,9 @@ public class Client {
             long sum = 200 + random.nextInt(200);
 //            String json = "{\"title\": \"булка\", \"date\": \"2022.02.08\", \"sum\": " + sum + "}";
 //            String json = "{\"title\": \"колбаса\", \"date\": \"2022.02.08\", \"sum\": " + sum + "}";
-            String json = "{\"title\": \"тапки\", \"date\": \"2022.02.08\", \"sum\": " + sum + " }";
+//            String json = "{\"title\": \"тапки\", \"date\": \"2022.02.08\", \"sum\": " + sum + " }";
 //            String json = "{\"title\": \"мыло\", \"date\": \"2022.02.08\", \"sum\": " + sum + "}";
-//            String json = "{\"title\": \"футболка\", \"date\": \"2022.02.08\", \"sum\": " + sum + "}";
+            String json = "{\"title\": \"футболка\", \"date\": \"2022.02.08\", \"sum\": " + sum + "}";
             System.out.println("Send data: " + json);
             out.println(json); // city to send
             String result = in.readLine();// status(ok or not ok)
